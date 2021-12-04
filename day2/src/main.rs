@@ -11,7 +11,7 @@ where
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
-#[derive(Debug)]
+
 struct Position {
     x: i32,
     y: i32,

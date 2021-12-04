@@ -81,18 +81,18 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let input = &args[1];
 
-    let tp1 = Instant::now();
+    let t0 = Instant::now();
     match part_1(input) {
         Some(n) => {
-            let delta = tp1.elapsed().as_micros();
+            let delta = t0.elapsed().as_micros();
             println!("Max depth counter: {}. Elapsed: {} [us]", n, delta)
         }
         None => eprintln!("Something failed hard :("),
     }
-    let tp2 = Instant::now();
+    let t0 = Instant::now();
     match part_2(input) {
         Some(n) => {
-            let delta = tp2.elapsed().as_micros();
+            let delta = t0.elapsed().as_micros();
             println!(
                 "Max depth counter [3º window]: {}. Elapsed: {} [us]",
                 n, delta

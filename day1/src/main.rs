@@ -3,6 +3,7 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
+use std::time::Instant;
 
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where
@@ -80,13 +81,23 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let input = &args[1];
 
+    let tp1 = Instant::now();
     match part_1(input) {
-        Some(n) => println!("Max depth counter: {}", n),
+        Some(n) => {
+            let delta = tp1.elapsed().as_micros();
+            println!("Max depth counter: {}. Elapsed: {} [us]", n, delta)
+        }
         None => eprintln!("Something failed hard :("),
     }
-
+    let tp2 = Instant::now();
     match part_2(input) {
-        Some(n) => println!("Max depth counter [3º window]: {}", n),
+        Some(n) => {
+            let delta = tp2.elapsed().as_micros();
+            println!(
+                "Max depth counter [3º window]: {}. Elapsed: {} [us]",
+                n, delta
+            )
+        }
         None => eprintln!("Something failed hard :("),
     }
 }
